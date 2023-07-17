@@ -27,7 +27,30 @@
 
 <script>
     export default {
-        
+        methods: {
+            CheckEmail(){
+                //Optimal email regex developed by Jim Matthews.
+                let regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+                var temp = document.getElementById("email");
+                var email = document.getElementById("email").value;
+
+                //Test if current value matches email regex.
+                if(regex.test(email))
+                {
+                    //if true hide alert and remove styling from email input
+                    document.getElementById("email-alert").style.display = 'none';
+                    document.getElementById("email").classList.remove("border-red-600");
+                    document.getElementById("email").classList.remove("ring-red-600");
+                }
+                else
+                {
+                    //if false display alert and change email input border to red
+                    document.getElementById("email-alert").style.display = 'inline';
+                    document.getElementById("email").classList.add("border-red-600");
+                    document.getElementById("email").classList.add("ring-red-600");
+                }
+            }
+        }
     }
     
 </script>
